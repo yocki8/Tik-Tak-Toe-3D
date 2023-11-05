@@ -1,6 +1,7 @@
 'use strict'
 
 let won = false;
+let completed = true;
 let active = 0;
 let gridArr = Array(4).fill().map((arr)=> Array(4).fill('_'));
 const body = document.querySelector("body");
@@ -18,15 +19,17 @@ const winner = function(){
     center.style.border = '3px outset whitesmoke';
 }
 reset.addEventListener('click',resetGame);
+
 function resetGame() {
     won = false;
+    completed = false;
     active = 0;
     gridArr = Array(4).fill().map((arr) => Array(4).fill('_'));
     cells.forEach((cell) => {
-      cell.style.cursor = 'url(images/cross-cursor.svg),auto';
-      const img = cell.querySelector('img');
-      img.style.transition = 'opacity 1s';
-      img.style.opacity = 0;
+        cell.style.cursor = 'url(images/cross-cursor.svg),auto';
+        const img = cell.querySelector('img');
+        img.style.transition = 'opacity 1s';
+        img.style.opacity = 0;
     });
     win.style.padding = '0';
     center.style.padding = '0';
@@ -40,6 +43,7 @@ function resetGame() {
             img.style.opacity = 1;
             img.src='';
           });
+        completed=true;
         center.classList.remove('dia--1', 'dia--2', 'row--1', 'row--2', 'row--3', 'col--1', 'col--2', 'col--3');
     },1000);
 }
@@ -121,7 +125,7 @@ cells.forEach((cell)=>{
         const x = Number(e.target.closest('.cell').dataset.x);
         const y = Number(e.target.closest('.cell').dataset.y);
         
-        if(gridArr[x][y]==='_' && !won){
+        if(gridArr[x][y]==='_' && !won && completed){
         active = !active;
         if(active){
             const background = "rgb(85, 136, 255,0.7)";
@@ -146,7 +150,7 @@ cells.forEach((cell)=>{
         const x = Number(e.target.closest('.cell').dataset.x);
         const y = Number(e.target.closest('.cell').dataset.y);
 
-        if(gridArr[x][y]=='_' && !won){
+        if(gridArr[x][y]=='_' && !won && completed){
             const img = e.target.closest('.cell').querySelector('img');
             img.src = active ? 'images/zero.svg' :'images/cross.svg';
             img.style.opacity = 0.2;
@@ -158,7 +162,7 @@ cells.forEach((cell)=>{
         const x = Number(e.target.closest('.cell').dataset.x);
         const y = Number(e.target.closest('.cell').dataset.y);
         
-        if(gridArr[x][y]=='_' && !won){
+        if(gridArr[x][y]=='_' && !won && completed){
             const img = e.target.closest('.cell').querySelector('img');
             img.src = '';
             img.style.opacity = 1;
