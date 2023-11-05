@@ -56,13 +56,13 @@ body.addEventListener('click',(e)=>{
         resetGame();
     }
 
-    if(gridArr[2][2]!='_' && (gridArr[1][1]==gridArr[2][2] && gridArr[2][2]==gridArr[3][3]))
+    if(gridArr[2][2]!='_' && (gridArr[1][1]===gridArr[2][2] && gridArr[2][2]===gridArr[3][3]))
     {
         center.classList.add('dia--1');
         won=1;
     }
 
-    if(gridArr[2][2]!='_' && (gridArr[1][3]==gridArr[2][2] && gridArr[2][2]==gridArr[3][1]))
+    if(gridArr[2][2]!='_' && (gridArr[1][3]===gridArr[2][2] && gridArr[2][2]===gridArr[3][1]))
     {
         center.classList.add('dia--2');
         won=1;
@@ -73,13 +73,13 @@ body.addEventListener('click',(e)=>{
     {
         if(gridArr[i][i]!='_'){
 
-            if(gridArr[i][1]==gridArr[i][2] && gridArr[i][2]==gridArr[i][3])
+            if(gridArr[i][1]===gridArr[i][2] && gridArr[i][2]===gridArr[i][3])
             {
                 center.classList.add(`row--${i}`);
                 won = 1;
             }
             
-            else if(gridArr[1][i]==gridArr[2][i] && gridArr[2][i]==gridArr[3][i])
+            else if(gridArr[1][i]===gridArr[2][i] && gridArr[2][i]===gridArr[3][i])
             {
                 center.classList.add(`col--${i}`);
                 won = 1;
@@ -94,7 +94,7 @@ body.addEventListener('click',(e)=>{
         {
             for(j=1;j<=3;j++)
             {
-                if(gridArr[i][j]=='_') flag=0;
+                if(gridArr[i][j]==='_') flag=0;
             }
         }
 
@@ -125,7 +125,7 @@ cells.forEach((cell)=>{
         const x = Number(e.target.closest('.cell').dataset.x);
         const y = Number(e.target.closest('.cell').dataset.y);
         
-        if(gridArr[x][y]==='_' && !won && completed){
+        if(gridArr[x][y]===='_' && !won && completed){
         active = !active;
         if(active){
             const background = "rgb(85, 136, 255,0.7)";
@@ -150,7 +150,7 @@ cells.forEach((cell)=>{
         const x = Number(e.target.closest('.cell').dataset.x);
         const y = Number(e.target.closest('.cell').dataset.y);
 
-        if(gridArr[x][y]=='_' && !won && completed){
+        if(gridArr[x][y]==='_' && !won && completed){
             const img = e.target.closest('.cell').querySelector('img');
             img.src = active ? 'images/zero.svg' :'images/cross.svg';
             img.style.opacity = 0.2;
@@ -162,7 +162,7 @@ cells.forEach((cell)=>{
         const x = Number(e.target.closest('.cell').dataset.x);
         const y = Number(e.target.closest('.cell').dataset.y);
         
-        if(gridArr[x][y]=='_' && !won && completed){
+        if(gridArr[x][y]==='_' && !won && completed){
             const img = e.target.closest('.cell').querySelector('img');
             img.src = '';
             img.style.opacity = 1;
