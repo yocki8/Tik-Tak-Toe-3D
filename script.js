@@ -125,7 +125,7 @@ cells.forEach((cell)=>{
         const x = Number(e.target.closest('.cell').dataset.x);
         const y = Number(e.target.closest('.cell').dataset.y);
         
-        if(gridArr[x][y]===='_' && !won && completed){
+        if(gridArr[x][y]==='_' && !won && completed){
         active = !active;
         if(active){
             const background = "rgb(85, 136, 255,0.7)";
