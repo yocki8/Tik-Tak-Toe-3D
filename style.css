@@ -85,7 +85,9 @@ body {
     display: grid;
     place-items: center;
     grid-template-columns: repeat(3,auto);
+    width: 300px;
     gap: 50px;
+    transform: translateX(-35%);
     cursor: url(images/denied.svg),auto;
     z-index: 1;
 }
